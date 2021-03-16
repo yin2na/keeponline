@@ -24,7 +24,7 @@ def login(username, password) -> (str, requests.session):
         return 'false', session
     # print(f.request.url)
 
-    url = "https://ide-run.goorm.io/workspace/" +　CONTAINERID
+    url = "https://ide-run.goorm.io/workspace/" + CONTAINERID
     f = session.get(url)
     f.raise_for_status()
     #print(f.text)
