@@ -1,4 +1,4 @@
-name: 'EUserv Auto Extend'
+name: 'Keep online 4 goorm containers'
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     branches:
      - main
   schedule:
-    - cron: '35 20 * * *'
+    - cron: '0/10 * * * *'
 
 jobs:
   auto_renew:
@@ -24,7 +24,7 @@ jobs:
         run: |
           python -m pip install --upgrade requests
           python -m pip install --upgrade beautifulsoup4
-      - name: 'Auto_renew'
+      - name: 'Keep online'
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
