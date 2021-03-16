@@ -27,6 +27,22 @@ def login(username, password) -> (str, requests.session):
     url = "https://ide-run.goorm.io/workspace/" + CONTAINERID
     f = session.get(url)
     f.raise_for_status()
+    #print(f.text)
+    
+    referer = "https://ide-run.goorm.io/workspace/" + CONTAINERID
+    headers = {
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/83.0.4103.116 Safari/537.36",
+        "origin": "https://ide-run.goorm.io",
+        "referer": referer
+    }
+    data = {
+        "docker_id": "dJLD0WxG73niyYQ0SMW",
+        "project_path": CONTAINERID
+    }
+    url = "https://ide-run.goorm.io/container/run"
+    f = session.post(url, headers=headers, data=data)
+    f.raise_for_status()
     print(f.text)
 
     return 'true', session
