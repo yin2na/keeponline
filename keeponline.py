@@ -20,15 +20,14 @@ def login(username, password) -> (str, requests.session):
     session = requests.Session()
     f = session.post(url, headers=headers, data=login_data)
     f.raise_for_status()
-    #print(f.text)
+    print(f.text)
     if f.text.find('true') == -1:
         return 'false', session
-    # print(f.request.url)
 
     url = "https://ide-run.goorm.io/workspace/" + CONTAINERID
     f = session.get(url)
     f.raise_for_status()
-    #print(f.text)
+    print(f.text)
 
     return 'true', session
 
